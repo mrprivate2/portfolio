@@ -1,0 +1,239 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-abyss: #030504;
+  --color-ink: #050806;
+  --color-panel: rgba(10, 15, 11, 0.72);
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-strong: rgba(255, 255, 255, 0.16);
+  --color-violet: #168044;
+  --color-mint: #22c55e;
+  --color-amber: #fbbf24;
+
+  /* Switchable accent (Settings → Accent) */
+  --accent: #39ff88;
+  --accent-hover: #4dff92;
+  --accent-soft: #a9f5c6;
+  --accent-channels: 57, 255, 136;
+}
+
+[data-accent='emerald'] {
+  --accent: #22c55e;
+  --accent-hover: #4ade80;
+  --accent-soft: #86efac;
+  --accent-channels: 34, 197, 94;
+}
+
+[data-accent='forest'] {
+  --accent: #168044;
+  --accent-hover: #1f9d57;
+  --accent-soft: #5cb884;
+  --accent-channels: 22, 128, 68;
+}
+
+@theme inline {
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  background-color: var(--color-abyss);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: #e7f0e9;
+  background-color: var(--color-abyss);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+::selection {
+  background: rgba(var(--accent-channels), 0.35);
+  color: #fff;
+}
+
+/* Slim dark scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Visible, consistent focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Desktop utility */
+@utility glass {
+  background: rgba(10, 15, 11, 0.6);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@utility glass-strong {
+  background: rgba(10, 15, 11, 0.82);
+  backdrop-filter: blur(28px) saturate(150%);
+  -webkit-backdrop-filter: blur(28px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+/* Text glow for terminal accents */
+.text-glow {
+  text-shadow: 0 0 12px rgba(var(--accent-channels), 0.45);
+}
+
+/* Cinematic film grain over the whole desktop */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+}
+
+/* Soft glow pulse for desktop icon selection */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 18px rgba(var(--accent-channels), 0.35);
+  }
+  50% {
+    box-shadow: 0 0 26px rgba(var(--accent-channels), 0.55);
+  }
+}
+.animate-glow-pulse {
+  animation: glow-pulse 2.4s ease-in-out infinite;
+}
+
+/* Subtle pulse for live indicator */
+@keyframes soft-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  70%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+.animate-soft-ping {
+  animation: soft-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Boot cursor blink */
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.animate-caret {
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+/* Subtle CRT scanlines for the boot screen */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.014) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+/* Very subtle terminal flicker (boot brand line) */
+@keyframes terminal-flicker {
+  0%,
+  91%,
+  94%,
+  97%,
+  100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 0.82;
+  }
+  95% {
+    opacity: 0.92;
+  }
+}
+.animate-terminal-flicker {
+  animation: terminal-flicker 4s linear infinite;
+}
+
+/* Desktop mounts after boot — icons fade in together */
+@keyframes desktop-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-desktop-in {
+  animation: desktop-in 0.4s ease-out 0.12s both;
+}
+
+/* Manual reduced-motion toggle (Settings → Accessibility) */
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* Respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

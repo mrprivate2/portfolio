@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <title>Sawan Yadav — Developer Portfolio</title>
+    <meta
+      name="description"
+      content="Sawan Yadav — Software Engineer & Full Stack Developer. I build full-stack applications, real-time systems, and developer tools that actually work. Explore my desktop OS portfolio."
+    />
+    <meta name="author" content="Sawan Yadav" />
+    <meta name="theme-color" content="#030504" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sawan Yadav — Developer Portfolio" />
+    <meta
+      property="og:description"
+      content="A developer's personal computer that happens to be a portfolio. Full-stack apps, real-time systems, and developer tools."
+    />
+    <meta property="og:image" content="/og-cover.svg" />
+    <meta property="og:url" content="https://sawanyadav.dev/" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sawan Yadav — Developer Portfolio" />
+    <meta
+      name="twitter:description"
+      content="A developer's personal computer that happens to be a portfolio. Full-stack apps, real-time systems, and developer tools."
+    />
+    <meta name="twitter:image" content="/og-cover.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      // Respect reduced motion before first paint
+      try {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.documentElement.classList.add('reduced-motion');
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
