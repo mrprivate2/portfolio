@@ -6,7 +6,7 @@
 
 ## 🚀 Live Portfolio
 
-🌐 **[Visit Portfolio](#)**
+🌐 **[Visit Portfolio](https://mrprivate2.github.io/portfolio/)**
 
 ---
 
@@ -347,7 +347,7 @@ I'm interested in opportunities where I can work on challenging software, cybers
 
 * 🐙 **GitHub:** [Sawan Yadav](https://github.com/mrprivate2)
 * 💼 **LinkedIn:** [Sawan Yadav](#)
-* 🌐 **Portfolio:** [Visit Website](#)
+* 🌐 **Portfolio:** [Visit Website](https://mrprivate2.github.io/portfolio/)
 
 ---
 
